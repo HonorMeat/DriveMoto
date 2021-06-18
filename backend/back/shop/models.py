@@ -23,4 +23,5 @@ class Product(models.Model):
 class Watercraft(Product):
     madiIn = models.CharField(max_length=255, verbose_name='Страна производителя')
     place = models.IntegerField(verbose_name='Количество мест')
-    power = models.IntegerField(verbose_name='Мощность') 
+    power = models.IntegerField(verbose_name='Мощность')
+    motor = models.CharField(max_length=255, verbose_name=)
