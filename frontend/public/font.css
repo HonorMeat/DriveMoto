@@ -1,0 +1,25 @@
+@font-face {
+    font-family: sfB;
+    src: url(fonts/SFProDisplay-Bold.ttf);
+}
+@font-face {
+    font-family: sfM;
+    src: url(fonts/SFProDisplay-Medium.ttf);
+}
+@font-face {
+    font-family: sfR;
+    src: url(fonts/SFProDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: sfS;
+    src: url(fonts/SFProDisplay-Semibold.ttf);
+}
+
+@font-face {
+    font-family: pnS;
+    src: url(fonts/ProximaNova-Semibold.ttf);
+}
+@font-face {
+    font-family: pnB;
+    src: url(fonts/ProximaNova-Bold.ttf);
+}
