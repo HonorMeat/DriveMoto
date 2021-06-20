@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+// import {Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import Slider from 'react-slick'
 import axios from 'axios'
 
 import './Home.sass'
@@ -70,6 +72,8 @@ class Home extends Component{
             {img: slider},
             {img: slider}
           ],
+
+          popular: 'Квадроциклы',
         }
       }
     
@@ -82,6 +86,10 @@ class Home extends Component{
          .get('/api/product/')
          .then((res) => this.setState({ ProductList: [...this.state.ProductList, ...res.data] }))
          .catch((err) => console.log(err))
+      }
+
+      popularHandler = (popular) => {
+        this.setState({popular: popular})
       }
 
     render() {
@@ -99,7 +107,15 @@ class Home extends Component{
             <div style={{textAlign: 'center'}} className='Home'>
               <div className="container">
                 <div className="intro">
-                  <SliderUI wrapperClass="slider" settings={sliderSettings} sliderItemClass='slider_item' sliderItems={this.state.slider} />
+                  <Slider {...sliderSettings} className="slider">
+                    {
+                        this.state.slider.map((item, index) => (
+                            <div className='slider_item' key={ index }>
+                                <img src={ item.img } alt="now" />
+                            </div>
+                        ))
+                    }
+                  </Slider>
                   <NavLink to='/' className="sale-item">
                     <div className="sale-item_up">
                       <div className="sale-item_up-icon">
@@ -154,14 +170,6 @@ class Home extends Component{
                     <button>ИСКАТЬ</button>
                   </div>
                 </form>
-                
-                
-                {/* <div>
-                    {this.state.ProductList.map((product, index) => (
-                        <p key={index}>{product.title}</p>
-                    ))}
-                </div> */}
-
 
                 <div className="catalog">
                   { this.state.catalog.map((catalogItem, index) => (
@@ -179,6 +187,22 @@ class Home extends Component{
                     </NavLink>
                   )) }
                 </div>
+
+                <div className="popular">
+                  <h1 className="popular-header">Популярные товары</h1>
+
+                  <div className="popular-wrapper">
+                      <div className="popular-wrapper_header">
+                        { this.state.catalog.map((title, index) => (
+                          <h1 className={`popular-wrapper_header-item ${this.state.popular === title.title ? 'popular-wrapper_header-item_active' : ''}`} key={index} onClick={() => this.popularHandler(title.title)}>{ title.title }</h1>
+                        )) }
+                      </div>
+                      <div className="popular-wrapper_content">
+                        { this.state.popular  }
+                      </div>
+                  </div>
+                </div>
+
                 <NavLink to='/motor' className="add">
                   <img src={ add } alt="add" />
                   <p className="text">
@@ -187,6 +211,13 @@ class Home extends Component{
                   </p>
                   <NavLink to='/motor'>ПОСМОТРЕТЬ ВСЕ</NavLink>
                 </NavLink>
+
+                <div className="accessories">
+                  <h1 className="accessories-header">С этим товаром покупают</h1>
+                  <Slider className="accessories-slider">
+
+                  </Slider>
+                </div>
               </div>
             </div>
         )

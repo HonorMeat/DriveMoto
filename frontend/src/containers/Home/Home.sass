@@ -144,6 +144,51 @@
                     .slick-track
                         display: flex
                         position: relative
+                        div
+                            border: none
+                            outline: none
+
+        .popular
+            margin-top: 80px
+            text-align: left
+            color: #2F3035
+            font-family: 'Barlow', sans-serif
+            &-header
+                font-size: 25px
+                font-weight: 700
+                margin-bottom: 25px
+            &-wrapper
+                &_header
+                    display: flex
+                    flex-direction: row
+                    font-family: sfR, sans-serif
+                    font-size: 15px
+                    text-transform: lowercase
+                    &-item
+                        margin-left: 50px
+                        position: relative
+                        cursor: pointer
+                        &:hover
+                            &::after
+                                width: 100%
+                        &::after
+                            position: absolute
+                            bottom: -10px
+                            transition: .3s ease-in-out
+                            content: ''
+                            display: block
+                            width: 0%
+                            left: 50%
+                            transform: translateX(-50%)
+                            height: 3px
+                            background: #1C62CD
+                        &:first-child
+                            margin-left: 0
+                    &-item_active
+                        &::after
+                            width: 100%
+                &_content
+                    margin-top: 45px
         .search
             label
                 padding: 12px 26px
@@ -268,3 +313,11 @@
                 font-family: sfM, sans-serif
                 cursor: pointer
                 transition: .3s ease-in-out
+        .accessories
+            margin-top: 72px
+            text-align: left
+            color: #2F3035
+            font-family: 'Barlow', sans-serif
+            &-header
+                font-weight: 700
+                font-size: 25px
